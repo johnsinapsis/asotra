@@ -109,5 +109,10 @@ Route::group(['middleware' => ['auth']], function () {
 		'as' => 'areasopor'
 		]); 
 
+	Route::post('areasopor',[
+		'uses' => 'AreaSoporController@store',
+		'as' => 'areasopor'
+		]); 
+
 
 }); 

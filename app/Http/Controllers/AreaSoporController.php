@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AreaSopor;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +18,7 @@ class AreaSoporController extends Controller
      */
     public function index()
     {
-        dd("hola");
+        return View('sistemas.viewAreaSopor');
     }
 
     /**
@@ -37,7 +39,25 @@ class AreaSoporController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $v = \Validator::make($request->all(), [
+             'nombre' => 'required'
+            ]);
+          if ($v->fails())
+        {
+             //$request->flash();
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        else
+         {
+
+            $area = new AreaSopor([
+                'nom_area' => $request->get('nombre'),
+                'estado'   => $request->get('estado'),
+                'obs_area' => $request->get('observacion')
+                ]);
+            $area->save();
+            return View('sistemas.viewAreaSopor')->with('mensaje','Area registrada Satisfactoriamente');
+        }
     }
 
     /**
@@ -49,6 +69,13 @@ class AreaSoporController extends Controller
     public function show($id)
     {
         //
+    }
+
+    public function listareas()
+    {
+        $area = AreaSopor:: orderBy('nom_area')
+                         ->paginate(10);
+        return $area;
     }
 
     /**
