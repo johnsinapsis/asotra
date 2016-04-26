@@ -96,6 +96,30 @@ Route::group(['middleware' => ['auth']], function () {
 	 	return Response::json($result);
 	 });
 
+	Route::any('cargo/autocomplete', function(){  
+	 	// $term = "med";
+	 	$term = Input::get('term');
+	 	$data = DB::table('nmcargos')->select('id','nomcargo')->where('nomcargo','LIKE',$term.'%')
+	 	->get();
+	 	//$result[0] = array('value' => 'Medicadiz', 'id' => '2');
+	 	foreach ($data as $v) {
+	 		$result[] =  array('value' => $v->nomcargo, 'id' => $v->id);
+	 	}
+	 	return Response::json($result);
+	 });
+
+	Route::any('entidad/autocomplete', function(){  
+	 	// $term = "med";
+	 	$term = Input::get('term');
+	 	$data = DB::table('nmentidades')->select('id','nombre')->where('nombre','LIKE',$term.'%')
+	 	->get();
+	 	//$result[0] = array('value' => 'Medicadiz', 'id' => '2');
+	 	foreach ($data as $v) {
+	 		$result[] =  array('value' => $v->nombre, 'id' => $v->id);
+	 	}
+	 	return Response::json($result);
+	 });
+
 
 	
 	
@@ -113,6 +137,55 @@ Route::group(['middleware' => ['auth']], function () {
 		'uses' => 'AreaSoporController@store',
 		'as' => 'areasopor'
 		]); 
+
+	Route::get('cargo',[
+		'uses' => 'CargoController@index',
+		'as' => 'cargo'
+		]); 
+
+	Route::post('cargo',[
+		'uses' => 'CargoController@store',
+		'as' => 'cargo'
+		]); 
+	Route::post('editcargo/{id}',[
+		'uses' => 'CargoController@edit',
+		'as' => 'editcargo'
+		]); 
+
+	Route::post('upcargo',[
+		'uses' => 'CargoController@update',
+		'as' => 'upcargo'
+		]); 
+
+	Route::post('browcargo',[
+		'uses' => 'CargoController@browse',
+		'as' => 'browcargo'
+		]);
+
+	Route::get('entinom',[
+		'uses' => 'EntiNominaController@index',
+		'as' => 'entinom'
+		]); 
+
+	Route::post('entinom',[
+		'uses' => 'EntiNominaController@store',
+		'as' => 'entinom'
+		]); 
+
+	Route::post('editnomenti/{id}',[
+		'uses' => 'EntiNominaController@edit',
+		'as' => 'editnomenti'
+		]); 
+
+	Route::post('upentinom',[
+		'uses' => 'EntinominaController@update',
+		'as' => 'upentinom'
+		]);
+
+	Route::post('brownomenti',[
+		'uses' => 'EntiNominaController@browse',
+		'as' => 'brownomenti'
+		]);
 
 
 }); 

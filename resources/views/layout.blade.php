@@ -11,7 +11,8 @@
     http://www.templatemo.com/tm-420-ocean
     -->
     <title>Intranet Asotrauma</title>
-    <link rel="shortcut icon" type="image/x-icon" href="aso.ico">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="aso.ico"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{{ asset('aso.ico') }}}">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     
@@ -21,23 +22,29 @@
     {!! Html::style('css/bootstrap.min.css')!!}
 
     <!-- Animate -->
-    <link rel="stylesheet" href="css/animate.min.css">
+    <!-- <link rel="stylesheet" href="css/animate.min.css"> -->
+    {!! Html::style('css/animate.min.css')!!}
 
     <!-- Google Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="css/awesome/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="css/awesome/font-awesome.min.css"> -->
+    {!! Html::style('css/awesome/font-awesome.min.css')!!}
     
     <!-- Normailize Stylesheet -->
-    <link rel="stylesheet" href="css/normalize.min.css">
+    <!-- <link rel="stylesheet" href="css/normalize.min.css"> -->
+    {!! Html::style('css/normalize.min.css')!!}
 
     <!-- Main Styles -->
-    <link rel="stylesheet" href="css/templatemo_style.css">
+    <!-- <link rel="stylesheet" href="css/templatemo_style.css"> -->
+    {!! Html::style('css/templatemo_style.css')!!}
 
-    <link rel="stylesheet" href="plugins/jquery-ui-1.11.4/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="plugins/jquery-ui-1.11.4/jquery-ui.css"> -->
+    {!! Html::style('plugins/jquery-ui-1.11.4/jquery-ui.css')!!}
 
-    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- <script src="js/vendor/modernizr-2.6.2.min.js"></script> -->
+    {!! Html::script('js/vendor/modernizr-2.6.2.min.js') !!}
 
     <style>
         .ui-dialog .ui-widget-header
@@ -74,7 +81,8 @@
                 <div class="menu-holder">
                     <div class="col-md-3 col-sm-2 logo">
                         <a href="{{route('main')}}" title="templatemo 420 ocean">
-                            <img src="images/asotrauma.png" alt="templatemo 420 ocean" width="70%" height="70%">
+                            <!-- <img src="images/asotrauma.png" alt="templatemo 420 ocean" width="70%" height="70%"> -->
+                            {!! Html::image('images/asotrauma.png', "Asotrauma", array('width' => '70%', 'height' => '70%')) !!}
                         </a>
                     </div>
                     <div class="col-md-7 col-sm-8">
@@ -314,17 +322,32 @@
     @endif
     
 
-    <script src="js/vendor/jquery-1.10.1.min.js"></script>
+    <!-- <script src="js/vendor/jquery-1.10.1.min.js"></script> -->
+    {!! Html::script('js/vendor/jquery-1.10.1.min.js') !!}
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/templatemo_custom.js"></script> 
-    <script src="plugins/jquery-ui-1.11.4/jquery-ui.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    {!! Html::script('js/bootstrap.min.js') !!}
+    
+    <!-- <script src="js/plugins.js"></script> -->
+    {!! Html::script('js/plugins.js') !!}
+
+    <!-- <script src="js/config.js"></script> -->
+    {!! Html::script('js/config.js') !!}
+
+    <!-- <script src="js/templatemo_custom.js"></script>  -->
+    {!! Html::script('js/templatemo_custom.js') !!}
+
+    <!-- <script src="plugins/jquery-ui-1.11.4/jquery-ui.js"></script> -->
+    {!! Html::script('plugins/jquery-ui-1.11.4/jquery-ui.js') !!}
+
     <!-- SmartMenus jQuery plugin -->
-    <script src="plugins/jquery.smartmenus.js"></script>
+    <!-- <script src="plugins/jquery.smartmenus.js"></script> -->
+    {!! Html::script('plugins/jquery.smartmenus.js') !!}
+
     <!-- SmartMenus jQuery Bootstrap Addon -->
-    <script src="plugins/addons/bootstrap/jquery.smartmenus.bootstrap.js"></script>
+    <!-- <script src="plugins/addons/bootstrap/jquery.smartmenus.bootstrap.js"></script> -->
+    {!! Html::script('plugins/addons/bootstrap/jquery.smartmenus.bootstrap.js') !!}
     <script>
     $( "#draggable" ).draggable();
 
@@ -354,6 +377,54 @@
         });
 
       });
+
+     //*********autocomplete de cargos*******
+     $(document).ready(function(){
+        $("#nomcargo").bind({
+        });
+        $("#nomcargo").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('cargo/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idcargo").val(ui.item.id);
+          }
+        });
+
+         $("#nomcargo2").bind({
+        });
+        $("#nomcargo2").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('cargo/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idcargo2").val(ui.item.id);
+          }
+        });
+
+
+      });
+     //***************************************
+
+     //*******autocomplete de entidades
+
+     (document).ready(function(){
+        $("#nomentidad").bind({
+        });
+        $("#nomentidad").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('entidad/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#ident").val(ui.item.id);
+          }
+        });
+
+     //**********************************
+
     </script>
 
     @if(Auth::guest())

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\AreaSopor;
+use DB;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AreaSoporController extends Controller
+class ActividadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class AreaSoporController extends Controller
      */
     public function index()
     {
-        return View('sistemas.viewAreaSopor');
+        //
     }
 
     /**
@@ -39,25 +39,7 @@ class AreaSoporController extends Controller
      */
     public function store(Request $request)
     {
-        $v = \Validator::make($request->all(), [
-             'nombre' => 'required'
-            ]);
-          if ($v->fails())
-        {
-             //$request->flash();
-            return redirect()->back()->withInput()->withErrors($v->errors());
-        }
-        else
-         {
-
-            $area = new AreaSopor([
-                'nom_area' => $request->get('nombre'),
-                'estado'   => $request->get('estado'),
-                'obs_area' => $request->get('observacion')
-                ]);
-            $area->save();
-            return View('sistemas.viewAreaSopor')->with('mensaje','Area registrada Satisfactoriamente');
-        }
+        //
     }
 
     /**
@@ -71,11 +53,46 @@ class AreaSoporController extends Controller
         //
     }
 
-    public function listareas()
+    public function list_profesion()
     {
-        $area = AreaSopor:: orderBy('nom_area')
-                         ->paginate(5);
-        return $area;
+        $list = DB::table('par_profesion')->select('id','prof_nom')->orderBy('prof_nom')->get();
+        return $list;
+    }
+
+    public function list_ocupacion()
+    {
+        $list = DB::table('par_ocupacion')->select('id','nombre')->orderBy('nombre')->get();
+        return $list;
+    }
+
+    public function list_modcon()
+    {
+        $list = DB::table('par_modcon')->select('id','nombre','codgema')->orderBy('nombre')->get();
+        return $list;
+    }
+
+    public function list_jornadas()
+    {
+        $list = DB::table('nmjornadas')->select('id','nombre','numhoras')->orderBy('nombre')->get();
+        return $list;
+    }
+
+    public function list_tipocon()
+    {
+        $list = DB::table('nmtipocon')->select('id','nombre')->orderBy('nombre')->get();
+        return $list;
+    }
+
+    public function list_tipoent()
+    {
+        $list = DB::table('nmtipoent')->select('id','nombre')->orderBy('nombre')->get();
+        return $list;
+    }
+
+    public function list_forpago()
+    {
+        $list = DB::table('nmforpago')->select('id','nombre')->orderBy('nombre')->get();
+        return $list;
     }
 
     /**

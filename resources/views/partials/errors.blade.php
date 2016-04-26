@@ -4,7 +4,7 @@
         @lang('auth.errors_title'):<br><br>
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li style="color:#0B53B4">{{ $error }}</li>
             @endforeach
         </ul>
     </div>
