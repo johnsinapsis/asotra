@@ -72,17 +72,21 @@ class EntiNominaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($tipo)
     {
-        //
+        $ent = EntiNomina::where('tipo','=',$tipo)
+                        ->orderBy('nombre')
+                        ->get();
+        return $ent;
     }
 
     public function browse(Request $request)
     {
-        $ent = EntiNomina::where('nit','=',$request->get('ident'))
+        $ent = EntiNomina::where('id','=',$request->get('ident'))
                         ->first();
+                        //dd($request->get('ident'));
         $view = View('nomina.viewEntidades',[
-                'entidad_nit' => $ent->id,
+                'entidad_nit' => $ent->nit,
                 'entidad_nom' => $ent->nombre,
                 'entidad_tipo' => $ent->tipo,
             ]);
@@ -94,7 +98,7 @@ class EntiNominaController extends Controller
                  ->join('nmtipoent','nmentidades.tipo','=','nmtipoent.id')
                  ->orderBy('nmtipoent.nombre')
                  ->paginate(10);
-                $ent->setPath(route('cargo'));
+                $ent->setPath(route('entinom'));
         return $ent;
     }
 
@@ -109,7 +113,7 @@ class EntiNominaController extends Controller
         $ent = EntiNomina::where('nit','=',$nit)
                         ->first();
         $view = View('nomina.viewEntidades',[
-                'entidad_nit' => $ent->id,
+                'entidad_nit' => $ent->nit,
                 'entidad_nom' => $ent->nombre,
                 'entidad_tipo' => $ent->tipo,
             ]);
@@ -125,21 +129,24 @@ class EntiNominaController extends Controller
      */
     public function update(Request $request)
     {
+        //dd($request->get('nit'));
         $mensaje = [
             'tipent.exist' => 'Debe seleccionar un tipo de entidad'
         ];
         $v = \Validator::make($request->all(), [
-             'tipent' => 'required|exist:nmtipoent,id',
+             'tipent' => 'required|exists:nmtipoent,id',
              'nombre' => 'required',
-             'nit' => 'required|unique:nmentidades,nit',
+             'nit' => 'required|unique:nmentidades,nit,'.$request->get('nit').',nit',
 
             ],$mensaje);
           if ($v->fails())
         {
+             //dd('falló');
              //$request->flash();
             return redirect()->back()->withInput()->withErrors($v->errors());
         }
         else{
+            
             EntiNomina::where('nit','=',$request->get('nit'))
                     ->update([
                 'nit' => $request->get('nit'),

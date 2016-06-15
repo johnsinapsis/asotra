@@ -5,6 +5,7 @@
     <div class="top-c">
         <div class="container">
             <div class="row">
+                @if(Auth::guest())
                 <div class="col-md-offset-1 col-lg-5 col-md-5 col-xs-offset-1 col-sm-5 col-xs-8 col-xs-offset-2">
                     <div class="topc-img">
                         <img src="images/tecsalud.png" alt="">
@@ -16,9 +17,98 @@
                         <li><i class="fa fa-check"></i>Próximamente en este sitio encontrará información de su interés.</li>
                         <li><i class="fa fa-check"></i>Al iniciar sesión contará con herramientas de apoyo para sus labores diarias.</li>
                         <li><i class="fa fa-check"></i>Próximamente documentación de dominio interno.</li>
-
+                
                     </ul>
                 </div>
+                @else
+                <div class=""> 
+                    <h3 style="color: #0662EB; font-weight: bold; text-align: center;">JORNADA PEDAGÓGICA LAVADO DE MANOS 2016</h3>  
+                </div>
+                <div id="MainMenu">
+                    <div class="list-group panel">
+                        <a href="#foto1" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto1"> 
+                            <img src="images/IMG_7820.jpg" alt="">
+                        </div>
+                        <a href="#foto2" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto2"> 
+                            <img src="images/IMG_7821.jpg" alt="">
+                        </div>
+                        <a href="#foto3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto3"> 
+                            <img src="images/IMG_7822.jpg" alt="">
+                        </div>
+                        <a href="#foto4" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto4"> 
+                            <img src="images/IMG_7823.jpg" alt="">
+                        </div>
+                        <a href="#foto5" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto5"> 
+                            <img src="images/IMG_7824.jpg" alt="">
+                        </div>
+                        <a href="#foto6" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto6"> 
+                            <img src="images/IMG_7825.jpg" alt="">
+                        </div>
+                        <a href="#foto7" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto7"> 
+                            <img src="images/IMG_7826.jpg" alt="">
+                        </div>
+                        <a href="#foto8" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto8"> 
+                            <img src="images/IMG_7827.jpg" alt="">
+                        </div>
+                        <a href="#foto9" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto9"> 
+                            <img src="images/IMG_7828.jpg" alt="">
+                        </div>
+                        <a href="#foto10" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto10"> 
+                            <img src="images/IMG_7829.jpg" alt="">
+                        </div>
+                        <a href="#foto11" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto11"> 
+                            <img src="images/IMG_7830.jpg" alt="">
+                        </div>
+                        <a href="#foto12" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto12"> 
+                            <img src="images/IMG_7831.jpg" alt="">
+                        </div>
+                        <a href="#foto13" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto13"> 
+                            <img src="images/IMG_7832.jpg" alt="">
+                        </div>
+                        <a href="#foto14" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto14"> 
+                            <img src="images/IMG_7833.jpg" alt="">
+                        </div>
+                        <a href="#foto15" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto15"> 
+                            <img src="images/IMG_7834.jpg" alt="">
+                        </div>
+                        <a href="#foto16" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto16"> 
+                            <img src="images/IMG_7835.jpg" alt="">
+                        </div>
+                        <a href="#foto17" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto17"> 
+                            <img src="images/IMG_7836.jpg" alt="">
+                        </div>
+                        <a href="#foto18" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto18"> 
+                            <img src="images/IMG_7837.jpg" alt="">
+                        </div> 
+                        <a href="#foto19" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto19"> 
+                            <img src="images/IMG_7838.jpg" alt="">
+                        </div>
+                        <a href="#foto20" class="list-group-item list-group-item-warning" data-toggle="collapse" data-parent="#MainMenu">Click para ver foto</a>
+                        <div class="collapse" id="foto20"> 
+                            <img src="images/IMG_7838.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

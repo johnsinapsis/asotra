@@ -74,7 +74,14 @@ class AreaSoporController extends Controller
     public function listareas()
     {
         $area = AreaSopor:: orderBy('nom_area')
-                         ->paginate(5);
+                         ->paginate(10);
+        return $area;
+    }
+
+    public function listareas2()
+    {
+        $area = AreaSopor:: orderBy('nom_area')
+                         ->get();
         return $area;
     }
 

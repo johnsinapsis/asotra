@@ -39,6 +39,7 @@
     <!-- Main Styles -->
     <!-- <link rel="stylesheet" href="css/templatemo_style.css"> -->
     {!! Html::style('css/templatemo_style.css')!!}
+    {!! Html::style('css/intranet.css')!!}
 
     <!-- <link rel="stylesheet" href="plugins/jquery-ui-1.11.4/jquery-ui.css"> -->
     {!! Html::style('plugins/jquery-ui-1.11.4/jquery-ui.css')!!}
@@ -410,7 +411,7 @@
 
      //*******autocomplete de entidades
 
-     (document).ready(function(){
+     $(document).ready(function(){
         $("#nomentidad").bind({
         });
         $("#nomentidad").autocomplete({
@@ -423,7 +424,140 @@
           }
         });
 
+      });
+
      //**********************************
+
+      //*******autocomplete de profesiones
+
+     $(document).ready(function(){
+        $("#nomprof").bind({
+        });
+        $("#nomprof").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('prof/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idprof").val(ui.item.id);
+          }
+        });
+
+      });
+
+     //**********************************
+
+      //*******autocomplete de ocupaciones
+
+     $(document).ready(function(){
+        $("#nomocupa").bind({
+        });
+        $("#nomocupa").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('ocupa/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idocupa").val(ui.item.id);
+          }
+        });
+
+      });
+
+     //**********************************
+
+     //*******autocomplete de empleados
+
+     $(document).ready(function(){
+        $("#nomemple").bind({
+        });
+        $("#nomemple").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('emple/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idemple").val(ui.item.id);
+          }
+        });
+
+      });
+
+     //**********************************
+
+     //*******autocomplete de cuadros
+
+     $(document).ready(function(){
+        $("#nomcuadro").bind({
+        });
+        $("#nomcuadro").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('cuadro/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idcuadro").val(ui.item.id);
+          }
+        });
+
+      });
+
+     $(document).ready(function(){
+        $("#nomcuadro2").bind({
+        });
+        $("#nomcuadro2").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('cuadro/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idcuadro2").val(ui.item.id);
+          }
+        });
+
+      });
+
+
+     //**********************************
+
+     //*******autocomplete de usuarios
+
+     $(document).ready(function(){
+        $("#nomusua").bind({
+        });
+        $("#nomusua").autocomplete({
+          minLength:3,
+          autoFocus:true,
+          source : "{{URL('user/autocomplete')}}",
+          //source:disponible,
+          select : function(event, ui){
+            $("#idusu").val(ui.item.id);
+          }
+        });
+
+      });
+
+     //**********************************
+
+
+ $.datepicker.regional['es'] = {
+ closeText: 'Cerrar',
+ prevText: '<Ant',
+ nextText: 'Sig>',
+ currentText: 'Hoy',
+ monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+ monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+ dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+ dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+ dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+ weekHeader: 'Sm',
+ dateFormat: 'dd/mm/yy',
+ firstDay: 1,
+ isRTL: false,
+ showMonthAfterYear: false,
+ yearSuffix: ''
+ };
+ $.datepicker.setDefaults($.datepicker.regional['es']);
 
     </script>
 
@@ -453,6 +587,17 @@
     </script>
            {{--*/$i++/*--}}
             @endforeach
+    @else
+      @for($i=0;$i<50;$i++)
+      <script>
+        
+        $( "#detaemptur{{$i}}" ).dialog({ autoOpen: false });        
+        $( "#emptur{{$i}}" ).click(function() {
+                $( "#detaemptur{{$i}}" ).dialog( "open" );
+                            });
+        
+      </script>
+        @endfor
     @endif
 </body>
 </html>

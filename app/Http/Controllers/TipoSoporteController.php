@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\TipoSopor;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

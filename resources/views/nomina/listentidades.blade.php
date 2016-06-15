@@ -33,7 +33,7 @@
 					<td><!-- <button type="button" name="modif" class="btn btn-small btn-warning" >Modificar</button> -->
 						{!! Form::open(['method' => 'POST','route' => ['editnomenti',$ent->nit]]) !!}
 
-    						<input type="submit" class="btn btn-small btn-warning"  value="Modificar">
+    						<input type="submit" class="btn btn-small btn-warning"  value="Modificar" >
 						{!! Form::close() !!}
 					</td>
 				</tr>

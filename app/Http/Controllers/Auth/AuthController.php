@@ -65,6 +65,14 @@ class AuthController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $user = User::where('id','=',$id)
+                       ->first();
+        return $user;
+    }
+
+
     /**
      * Get the path to the login route.
      *

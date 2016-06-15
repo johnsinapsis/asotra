@@ -45,7 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => storage_path('app'),
+            'root'   =>  '../../virtual_disk/', //storage_path('app')
         ],
 
         'ftp' => [

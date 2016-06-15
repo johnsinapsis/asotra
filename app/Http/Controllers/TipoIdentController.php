@@ -56,7 +56,7 @@ class TipoIdentController extends Controller
 
     public function list_tipoident()
     {
-        $tipodoc = Tipoident::select('id','abr')
+        $tipodoc = Tipoident::select('id','abr','nombre')
                                 ->orderBy('abr')->get();
         return $tipodoc;
     }

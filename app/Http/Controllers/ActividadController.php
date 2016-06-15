@@ -48,10 +48,24 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show_profesion($id)
     {
-        //
+        $list = DB::table('par_profesion')->select('id','prof_nom')->where('id','=',$id)->first();
+        return $list;
     }
+
+    public function show_ocupacion($id)
+    {
+        $list = DB::table('par_ocupacion')->select('id','nombre')->where('id','=',$id)->first();
+        return $list;
+    }
+
+    public function show_jornada($id)
+    {
+        $list = DB::table('nmjornadas')->select('id','numhoras')->where('id','=',$id)->first();
+        return $list;
+    }
+
 
     public function list_profesion()
     {
@@ -71,9 +85,16 @@ class ActividadController extends Controller
         return $list;
     }
 
+    public function list_estciv()
+    {
+        $list = DB::table('par_estciv')->select('id','nombre')->orderBy('nombre')->get();
+        return $list;
+    }
+
+
     public function list_jornadas()
     {
-        $list = DB::table('nmjornadas')->select('id','nombre','numhoras')->orderBy('nombre')->get();
+        $list = DB::table('nmjornadas')->select('id','nombre','numhoras')->orderBy('id')->get();
         return $list;
     }
 
@@ -91,7 +112,7 @@ class ActividadController extends Controller
 
     public function list_forpago()
     {
-        $list = DB::table('nmforpago')->select('id','nombre')->orderBy('nombre')->get();
+        $list = DB::table('nmforpago')->select('id','nombre')->orderBy('id')->get();
         return $list;
     }
 

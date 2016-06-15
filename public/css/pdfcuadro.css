@@ -1,0 +1,13 @@
+.table {
+	border-collapse: collapse;
+}
+
+.table, th, td {
+    border: 1px solid black;
+    font-family: sans-serif;
+}
+
+.elabora{
+	position: relative;
+	left: 40px;
+}

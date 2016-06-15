@@ -68,7 +68,7 @@
                                             @if($entidad_tipo==$tipo->id)
                                             {{--*/ $selected="selected" /*--}}
                                             @endif
-                                                <option value="{{$tipo->id}}" >{{$tipo->nombre}}</option>
+                                                <option value="{{$tipo->id}}" {{$selected}}>{{$tipo->nombre}}</option>
                                                 {{--*/ $selected="" /*--}}
                                             @endforeach
                                         </select>

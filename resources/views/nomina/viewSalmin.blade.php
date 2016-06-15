@@ -5,38 +5,35 @@
 			<div class="row">
 				<div id="draggable" style="position:absolute; z-index: 99;" class="col-xs-8">
 					<div class="panel panel-primary class" >
-						<div class="panel-heading" align="center">ENTIDADES</div>
+						<div class="panel-heading" align="center">SALARIO MINIMO ANUAL</div>
 						<div class="panel-body">
 							@include('partials/errors')
 							@include('partials/success')
 							@include('partials/msg-ok')
-							@if(isset($cargo_id))
+							@if(isset($salmin_ano))
                             
-                            @if($cargo_idj!="")
-                            {{--*/ $nomjefe = $jefe->show($cargo_idj)->nomcargo  /*--}}
-                            @else
-                            {{--*/ $nomjefe="" /*--}}
-                            @endif
-                            {!! Form::open(['class' => 'form-horizontal', 'role' => 'form','method' => 'POST','route' => 'upcargo']) !!}
+                            
+                            {{--*/ $readonly="readonly" /*--}}
+                            {!! Form::open(['class' => 'form-horizontal', 'role' => 'form','method' => 'POST','route' => 'upsalmin']) !!}
                             
                             @else
-                            {{--*/ $nit="" /*--}}
-                            {{--*/ $entidad_nom="" /*--}}
-                            {{--*/ $cargo_idj=0 /*--}}
-                            {{--*/ $nomjefe="" /*--}}
-                            {!! Form::open(['class' => 'form-horizontal', 'role' => 'form','method' => 'POST','route' => 'entinom']) !!}
+                            {{--*/ $salmin_ano="" /*--}}
+                            {{--*/ $salmin_val="" /*--}}
+                            {{--*/ $salmin_aux="" /*--}}
+                            {{--*/ $readonly="" /*--}}
+                            {!! Form::open(['class' => 'form-horizontal', 'role' => 'form','method' => 'POST','route' => 'salmin']) !!}
                             @endif
 								<input type="hidden" name="_token" id="_token" class="form-control" value="{{ csrf_token() }}">
 								<div class="form-group">
-                                	<label class="col-md-4 control-label">NIT:</label> 
+                                	<label class="col-md-5 control-label">Año:</label> 
                                 	<div class="col-md-2"> 
-                                		<input type="number" class="form-control" style="width:70px; height: 40px; padding: 1px 15px;" id="codigo" name="codigo" value="{{$nit}}" required="required" /> 
+                                		<input type="number" class="form-control" style="width:80px; height: 40px; padding: 1px 15px;" id="salano" name="salano" value="{{$salmin_ano}}" required="required" {{$readonly}}/> 
                                 	</div> 
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label">Nombre:</label> 
+                                    <label class="col-md-5 control-label">Salario Mínimo:</label> 
                                     <div class="col-md-6"> 
-                                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{$entidad_nom}}" required="required" /> 
+                                        <input type="number" class="form-control" style="width:150px; height: 40px; padding: 1px 15px;" id="salmin" name="salmin" value="{{$salmin_val}}" required="required" /> 
                                     </div> 
                                 </div>
                                <!--  <div class="form-group">
@@ -58,16 +55,10 @@
                                </div> -->
 
                                 <div class="form-group">
-                                <label class="col-md-4 control-label">Tipo de entidad:</label>
+                                <label class="col-md-5 control-label">Auxilio de transporte:</label>
 
                                     <div class="col-md-6">
-                                        <select name="tipent" id="tipent" class="form-control">
-                                            @inject('entipos','App\Http\Controllers\ActividadController')
-                                            <option value="0">Seleccione</option>
-                                            @foreach($entipos->list_tipoent() as $tipo)
-                                                <option value="{{$tipo->id}}">{{$tipo->nombre}}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="number" class="form-control" style="width:150px; height: 40px; padding: 1px 15px;" id="auxtra" name="auxtra" value="{{$salmin_aux}}">      
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,7 +72,7 @@
 						</div>
 					</div>
 				</div>
-				@include('nomina.listcargos')
+				@include('nomina.listsalmin')
 			</div>
 		</div>
 	</div>	
